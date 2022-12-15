@@ -1,4 +1,4 @@
-#Here we go to the website click cookie and only buy grandma for five minutes
+#Here we go to the website click cookie and only buy farm for five minutes
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -17,7 +17,9 @@ options.BinaryLocation = "/usr/bin/chromium-browser"
 driver = webdriver.Chrome(executable_path="/usr/bin/chromedriver",options=options)
 driver.get("https://orteil.dashnet.org/cookieclicker/")
 time.sleep(10)
-
+#identify the Google search text box and enter the value  
+#my_element = driver.find_element("name","q")
+#my_element.send_keys('cryptography')
 link = driver.find_element(By.LINK_TEXT,"Got it!")
 link.click()
 time.sleep(10)
@@ -30,32 +32,55 @@ time.sleep(10)
 
 bigCookie = driver.find_element(By.ID,"bigCookie")
 cookie_count = driver.find_element(By.ID,"cookies")
+#actions = ActionChains(driver)
+#actions.click(bigCookie)
 
 
 
-#grandma
-productPrice1 = driver.find_element(By.ID,"productPrice1")
-grandma_price = productPrice1.text
-grandma_price = grandma_price.replace(",","")
-print(grandma_price)
 
 
-import time
+def farm():
+    print("Inside farm price")
+    #buying farm
+    productPrice2 = driver.find_element(By.ID,"productPrice2")
+    productPrice2 = productPrice2.text
+    productPrice2 = productPrice2.replace(",", "")
+    #print(productPrice2)
+    return productPrice2
+
+
+
 tic = time.time()
 tok = time.time()
 
 while(tok-tic < 60):
     bigCookie.click()
     count = int(cookie_count.text.split(" ")[0].replace(",",""))
-    if(count > int(productPrice1.text.replace(",",""))):
-        #print('Buying grandma')
-        actions2 = ActionChains(driver)
-        actions2.move_to_element(productPrice1)
-        actions2.click(productPrice1)
-        actions2.perform()
+
+    farm_price = farm()
+    if(farm_price):
+        if(count > int(farm_price)):
+            #print("Buying Farm")
+            productPrice2 = driver.find_element(By.ID,"productPrice2")
+            actions4 = ActionChains(driver)
+            actions4.move_to_element(productPrice2)
+            actions4.click(productPrice2)
+            actions4.perform()
+
+
+
+    
 
     tok = time.time()
-    print(tok-tic)
+    
+
+
+
+
+
+
+
+    
 
 
 print(cookie_count.text)
