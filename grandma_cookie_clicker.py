@@ -44,7 +44,7 @@ import time
 tic = time.time()
 tok = time.time()
 
-while(tok-tic < 60):
+while(tok-tic < 10):
     bigCookie.click()
     count = int(cookie_count.text.split(" ")[0].replace(",",""))
     if(count > int(productPrice1.text.replace(",",""))):
@@ -55,7 +55,7 @@ while(tok-tic < 60):
         actions2.perform()
 
     tok = time.time()
-    print(tok-tic)
+    #print(tok-tic)
 
 
 print(cookie_count.text)
