@@ -43,7 +43,7 @@ print(productPrice0.text)
 tic = time.time()
 tok = time.time()
 
-while(tok-tic < 3):
+while(tok-tic < 2):
     bigCookie.click()
     count = int(cookie_count.text.split(" ")[0])
     if(count > int(productPrice0.text)):
@@ -66,7 +66,7 @@ print(grandma_price)
 tic = time.time()
 tok = time.time()
 
-while(tok-tic < 6):
+while(tok-tic < 7):
     bigCookie.click()
     count = int(cookie_count.text.split(" ")[0].replace(",",""))
     if(count > int(productPrice1.text.replace(",",""))):
